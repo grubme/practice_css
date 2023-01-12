@@ -70,4 +70,62 @@ function App() {
         rewards: 0,
       },
     };
-    for (
+    for (let i = 0; i < userData.length; i++) {
+      let month = new Date(userData[i]['date']);
+        monthT[month.getMonth() + 1]['amounts'].push(userData[i]['amount']);
+    }
+    for (let key in monthT) {
+      let total_month_rewards = 0;
+      for (let i = 0; i < monthT[key]['amounts'].length; i++) {
+        let price = monthT[key]['amounts'][i];
+
+        total_month_rewards = total_month_rewards + handleRewardCalculation(price);
+      }
+      monthT[key]['rewards'] = total_month_rewards;
+    }
+    console.log(monthT)
+    setCalcRewards({ ...monthT });
+    setUserTransactions([...userData]);
+  };
+
+  const updateInput = (e) => {
+    if (e.target.name === "date") {
+      setNewTransaction({ ...newTransaction, ...{ date: e.target.value } });
+    }
+    if (e.target.name === "amount") {
+      setNewTransaction({ ...newTransaction, ...{ amount: e.target.value } });
+    }
+  }
+
+  const handleAddingTransaction = () => {
+    let data = { ...loadedData };
+    let month = new Date(newTransaction['date']);
+
+      data[currentUser].push(newTransaction);
+      console.log(data)
+      setloadedData({ ...data });
+
+      handleUserSelect(currentUser);
+
+    setNewTransaction({ date: new Date(), amount: 0 });
+  }
+  return (
+    <div style={{
+      marginTop: "20px",
+      marginBottom: "50px",
+      fontSize: "20px",
+
+    }}>
+      <h2 style={{ textAlign: "center" }}>Reward Points System</h2>
+      <div className="multi-choice">
+        <select onChange={e => handleUserSelect(e.target.value)} value={currentUser} >
+          <option value="" disabled>Select</option>
+          {users.map((item, index) => {
+            return (
+              <option key={index} value={item}> {item} </option>
+            );
+          })}
+        </select>
+      </div>
+
+      {Object.keys(userRewards).le
