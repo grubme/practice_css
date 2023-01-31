@@ -187,4 +187,43 @@ function App() {
                 <td>{userRewards[12]["rewards"]}</td>
               </tr>
               <tr>
-                <td style={{fontWeight: "bold"}}>T
+                <td style={{fontWeight: "bold"}}>Total Reward</td>
+                <td>{userRewards[1]["rewards"] + userRewards[2]["rewards"] + userRewards[3]["rewards"] +
+                    userRewards[4]["rewards"] +  userRewards[5]["rewards"] + userRewards[6]["rewards"] +
+                    userRewards[7]["rewards"] + userRewards[8]["rewards"] + userRewards[9]["rewards"] +
+                    userRewards[10]["rewards"] + userRewards[11]["rewards"] + userRewards[12]["rewards"]}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="transactions-container">
+          <h4>User Transactions</h4>
+          {userTransactions.length > 0 ?
+            <table className="customers">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Rewards</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                {userTransactions.map((item, index) => {
+                  return <tr key={index}>
+                    <td>{item["date"]}</td>
+                    <td>{item["amount"]}</td>
+                    <td>{handleRewardCalculation(item["amount"])}</td>
+                  </tr>
+                })}
+              </tbody>
+            </table>
+            : <div>No Transactions Found</div>}
+          <div>
+            <h4>Add Transactions</h4>
+
+            <div className="add-transaction">
+            <label>Date : </label><input type="date" name="date" value={newTransaction.date} onChange={(e) => updateInput(e)}></input>
+            <label>Amount :</label><input type="number" name="amount" value={newTransaction.amount} onChange={(e) => updateInput(e)}></input>
+            <button onClick={() => handleAddingTransaction()}>Add Transaction</button>
+            </div>
