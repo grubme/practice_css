@@ -128,4 +128,63 @@ function App() {
         </select>
       </div>
 
-      {Object.keys(userRewards).le
+      {Object.keys(userRewards).length > 0 &&
+        <div className="month-transaction">
+          <table className="customers">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Rewards</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>January</td>
+                <td>{userRewards[1]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>February</td>
+                <td>{userRewards[2]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>March</td>
+                <td>{userRewards[3]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>April</td>
+                <td>{userRewards[4]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>May</td>
+                <td>{userRewards[5]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>June</td>
+                <td>{userRewards[6]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>{userRewards[7]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>August</td>
+                <td>{userRewards[8]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>September</td>
+                <td>{userRewards[9]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>October</td>
+                <td>{userRewards[10]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>November</td>
+                <td>{userRewards[11]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td>December</td>
+                <td>{userRewards[12]["rewards"]}</td>
+              </tr>
+              <tr>
+                <td style={{fontWeight: "bold"}}>T
