@@ -227,3 +227,26 @@ function App() {
             <label>Amount :</label><input type="number" name="amount" value={newTransaction.amount} onChange={(e) => updateInput(e)}></input>
             <button onClick={() => handleAddingTransaction()}>Add Transaction</button>
             </div>
+          </div>
+          </div>
+        </div>
+      }
+
+
+    </ div >
+  );
+}
+
+export default App;
+
+function handleRewardCalculation(price) {
+  let rewards = 0;
+  if (price > 100) {
+    rewards = (price - 100) * 2;
+    rewards += 50;
+  } else if (price > 50) {
+    rewards += (price - 50);
+  }
+  return rewards;
+
+}
